@@ -13,7 +13,7 @@ def search_cProd_vFCP(root : etree._Element) -> None:
         # Encontrar a tag <prod><cprod> dentro de <det>
         cprod_element = det.find('.//nfe:prod/nfe:cProd', namespaces=namespace)
         
-        # Se a tag <cProd> for encontrada dentro de <cProd>, obter seu valor
+        # Se a tag <cProd> for encontrada dentro de <cProd>, guarda o valor
         if cprod_element is not None:
             cprod_valor = cprod_element.text
         else:
@@ -22,7 +22,7 @@ def search_cProd_vFCP(root : etree._Element) -> None:
         # Encontrar a tag <imposto><ICMS><ICMS00><vFCP> dentro de <det>
         vfcp_element = det.find('.//nfe:imposto/nfe:ICMS/nfe:ICMS00/nfe:vFCP', namespaces=namespace)
 
-        # Se a tag <vfcp> for encontrada dentro de <icms00>, obter seu valor
+        # Se a tag <vfcp> for encontrada dentro de <icms00>, guarda o valor
         if vfcp_element is not None:
             vfcp_valor = vfcp_element.text
         else:
@@ -32,6 +32,14 @@ def search_cProd_vFCP(root : etree._Element) -> None:
         print(f'Value of <cProd>: {cprod_valor}, Value of <vFCP>: {vfcp_valor}')
 
 def search_cProd_and_vFCP_optimization(root : etree._Element) -> list:
+    """
+        Função que extrai o texto que contém os erros.
+    Args:
+        param1: PDF com os problemas na importação do arquivo EFD.
+    Returns:
+        Retorna o texto com os erros da parte Ajuste do imposto retido por substituição tributária .
+    """
+    
     lista_inf = []
     namespace = {'nfe': 'http://www.portalfiscal.inf.br/nfe'}
 

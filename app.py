@@ -27,7 +27,6 @@ def remove_file(file : str, logger : logger) -> None:
 def main():
     #configura o que irá mostar no console
     logger.configure(handlers=[{"sink": sys.stderr, "level": "WARNING"}])
-
     # Configuração para salvar todos os níveis de log em um arquivo
     logger.add("log/log.log", level="DEBUG", rotation="500 MB")
 
@@ -42,8 +41,8 @@ def main():
             if dict_prod_vfcf:
                 keyNFe = xml.get_accesskeyNFe(root_xml)                
                 
-                querySelect = 'select n.CODSITDOC from rf_notamestre n where n.nfechaveacesso = '+ keyNFe +' and n.CODSITDOC NOT IN (2,3,4,5)'
                 # teste para verificar se o cupom foi cancelado
+                querySelect = 'select n.CODSITDOC from rf_notamestre n where n.nfechaveacesso = '+ keyNFe +' and n.CODSITDOC NOT IN (2,3,4,5)'
                 if connectDB.sql_query(querySelect):
                     prod_vfcf_db = connectDB.select_valores_db(keyNFe)
                 
