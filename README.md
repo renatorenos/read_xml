@@ -12,3 +12,10 @@ Conteúdo necessário em cada pasta:
 
   xml/ *.xml
 ```
+
+Criar o arquivo .env com as informações para conecção ao banco oracle:
+```
+  DB_USER="..."
+  DB_DSN="..."
+  DB_PASSWORD="..."
+```
